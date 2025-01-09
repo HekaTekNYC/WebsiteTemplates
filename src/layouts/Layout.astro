@@ -18,9 +18,10 @@ import StandardNav from '../components/nav/StandardNav.astro';
 		<title>{title}</title>
 	</head>
 	<body>
+		<StandardNav />
 		<slot />
 	</body>
-	<StandardNav />
+	
 </html>
 <style is:global>
 	:root {
@@ -36,7 +37,7 @@ import StandardNav from '../components/nav/StandardNav.astro';
 	}
 	html {
 		font-family: system-ui, sans-serif;
-		background: #13151a;
+		background: #ffffff;
 		background-size: 224px;
 	}
 	code {
@@ -50,4 +51,6 @@ import StandardNav from '../components/nav/StandardNav.astro';
 			Courier New,
 			monospace;
 	}
+
+	
 </style>
