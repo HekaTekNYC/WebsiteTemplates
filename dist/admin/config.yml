@@ -1,0 +1,6 @@
+media_folder: "src/assets/images" # Location where files will be stored in the repo
+public_folder: "src/assets/images" # The src attribute for uploaded media
+backend:
+  name: "git-gateway"
+  url: "https://github.com/HekaTekNYC/WebsiteTemplates.git"
+  branch: "main"
