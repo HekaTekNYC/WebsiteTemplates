@@ -141,9 +141,23 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"blog": {
-"party.md": {
-	id: "party.md";
-  slug: "party";
+"acuti-modo.md": {
+	id: "acuti-modo.md";
+  slug: "acuti-modo";
+  body: string;
+  collection: "blog";
+  data: any
+} & { render(): Render[".md"] };
+"canitiem-saxa.md": {
+	id: "canitiem-saxa.md";
+  slug: "canitiem-saxa";
+  body: string;
+  collection: "blog";
+  data: any
+} & { render(): Render[".md"] };
+"sucos-creati.md": {
+	id: "sucos-creati.md";
+  slug: "sucos-creati";
   body: string;
   collection: "blog";
   data: any
