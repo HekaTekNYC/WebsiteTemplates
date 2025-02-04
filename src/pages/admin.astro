@@ -7,10 +7,41 @@
     <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
     <title>Decap CMS Dashboard</title>
     <!-- Netlify Identity widget -->
-    <script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script
+      is:inline
+      src="https://identity.netlify.com/v1/netlify-identity-widget.js"
+    ></script>
   </head>
   <body>
     <!-- Decap CMS script -->
-    <script is:inline src="https://unpkg.com/decap-cms@^3.1.2/dist/decap-cms.js"></script>
+    <script
+      is:inline
+      src="https://unpkg.com/decap-cms@^3.1.2/dist/decap-cms.js"
+    ></script>
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Declare window.netlifyIdentity if it doesn't exist
+        if (!("netlifyIdentity" in window)) {
+          window.netlifyIdentity = undefined;
+        }
+
+        function waitForIdentity() {
+          if (window.netlifyIdentity) {
+            console.log("Netlify Identity loaded.");
+            window.netlifyIdentity.on("init", (user) => {
+              if (!user) {
+                window.netlifyIdentity.on("login", () => {
+                  document.location.href = "/admin/";
+                });
+              }
+            });
+          } else {
+            console.warn("Waiting for Netlify Identity...");
+            setTimeout(waitForIdentity, 500);
+          }
+        }
+        waitForIdentity();
+      });
+    </script>
   </body>
 </html>
