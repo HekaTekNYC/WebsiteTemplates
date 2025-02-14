@@ -72,4 +72,4 @@ collections:
           widget: "string",
           required: false,
         }
-      - {label: "Color", name: "color", widget: "color", required: false}
+git merge dev      - {label: "Color", name: "color", widget: "color", required: false}
