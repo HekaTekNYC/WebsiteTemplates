@@ -1,174 +1,23 @@
 ---
-import { getCollection } from "astro:content";
-import Layout from "../../layouts/Layout.astro";
+import { getCollection } from 'astro:content';
 
-// Fetch all blog posts from the collection
-const posts = await getCollection("blog");
-
-// Get all unique categories from posts
-const categories = Array.from(
-  new Set(posts.flatMap((post) => post.data.categories))
-);
-
-// Function to get a short preview of the post
-// const getPreview = (post) => post.data.preview || post.body.slice(0, 150) + "...";
+const posts = await getCollection('blog');
 ---
 
-<Layout title="Blog">
-  <!-- <section class="blog-page"> -->
-    
-    <!-- Categories Filter -->
-    <!-- <aside class="blog-categories">
-      <h2>Categories</h2>
-      <ul>
-        <li><a href="/blog">All</a></li>
-        {categories.map((category) => (
-          <li key={category}>
-            <a href={`/blog/category/${category.toLowerCase()}`}>{category}</a>
-          </li>
-        ))}
-      </ul>
-    </aside> -->
+<html>
+  <head>
+    <title>Blog | Hekatek</title>
+  </head>
+  <body>
+    <h1>Blog</h1>
+    <p>Explore our latest insights, tips, and updates.</p>
 
-    <!-- Blog Grid -->
-    <!-- <div class="blog-grid">
+    <ul>
       {posts.map((post) => (
-        <article class="blog-card" key={post.slug}>
-          <a href={`/blog/${post.slug}`} class="blog-card__link">
-            <img src={post.data.card_image} alt={post.data.title} class="blog-card__image" />
-            <div class="blog-card__content">
-              <span class="blog-card__category">{post.data.categories[0]}</span>
-              <h3 class="blog-card__title">{post.data.title}</h3>
-              <p class="blog-card__preview">{getPreview(post)}</p>
-              <a href={`/blog/${post.slug}`} class="blog-card__button">Read More</a>
-            </div>
-          </a>
-        </article>
+        <li key={post.id}>
+          <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+        </li>
       ))}
-    </div>
-  </section> -->
-</Layout>
-
-<style>
-  :root {
-    --primary-color: #1a1a1a;
-    --secondary-color: #f4f4f4;
-    --accent-color: #ff6600;
-  }
-
-  .blog-page {
-    display: flex;
-    gap: 2rem;
-    padding: 2rem;
-    max-width: 1200px;
-    margin: auto;
-  }
-
-  /* Categories Sidebar */
-  .blog-categories {
-    width: 250px;
-    background: var(--secondary-color);
-    padding: 1.5rem;
-    border-radius: 10px;
-  }
-
-  .blog-categories h2 {
-    margin-bottom: 1rem;
-  }
-
-  .blog-categories ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .blog-categories li {
-    margin-bottom: 0.5rem;
-  }
-
-  .blog-categories a {
-    text-decoration: none;
-    color: var(--primary-color);
-    font-weight: 500;
-  }
-
-  /* Blog Grid */
-  .blog-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-  }
-
-  .blog-card {
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
-  }
-
-  .blog-card:hover {
-    transform: scale(1.03);
-  }
-
-  .blog-card__link {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .blog-card__image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-
-  .blog-card__content {
-    padding: 1rem;
-  }
-
-  .blog-card__category {
-    display: block;
-    font-size: 0.85rem;
-    font-weight: bold;
-    color: var(--accent-color);
-    margin-bottom: 0.5rem;
-  }
-
-  .blog-card__title {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .blog-card__preview {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 1rem;
-  }
-
-  .blog-card__button {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    background: var(--accent-color);
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-  }
-
-  /* Responsive */
-  @media (max-width: 900px) {
-    .blog-page {
-      flex-direction: column;
-    }
-
-    .blog-categories {
-      width: 100%;
-      text-align: center;
-    }
-
-    .blog-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>
+    </ul>
+  </body>
+</html>
