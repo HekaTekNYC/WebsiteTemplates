@@ -11,14 +11,14 @@ const categories = Array.from(
 );
 
 // Function to get a short preview of the post
-const getPreview = (post) => post.data.preview || post.body.slice(0, 150) + "...";
+// const getPreview = (post) => post.data.preview || post.body.slice(0, 150) + "...";
 ---
 
 <Layout title="Blog">
-  <section class="blog-page">
+  <!-- <section class="blog-page"> -->
     
     <!-- Categories Filter -->
-    <aside class="blog-categories">
+    <!-- <aside class="blog-categories">
       <h2>Categories</h2>
       <ul>
         <li><a href="/blog">All</a></li>
@@ -28,10 +28,10 @@ const getPreview = (post) => post.data.preview || post.body.slice(0, 150) + "...
           </li>
         ))}
       </ul>
-    </aside>
+    </aside> -->
 
     <!-- Blog Grid -->
-    <div class="blog-grid">
+    <!-- <div class="blog-grid">
       {posts.map((post) => (
         <article class="blog-card" key={post.slug}>
           <a href={`/blog/${post.slug}`} class="blog-card__link">
@@ -46,7 +46,7 @@ const getPreview = (post) => post.data.preview || post.body.slice(0, 150) + "...
         </article>
       ))}
     </div>
-  </section>
+  </section> -->
 </Layout>
 
 <style>
