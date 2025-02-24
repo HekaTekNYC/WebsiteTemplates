@@ -9,3 +9,5 @@ tags:
   - travel
 ---
 Playa Del Carmen
+
+![](src/assets/images/blog/img_1353.jpeg)
