@@ -1,0 +1,24 @@
+---
+// Component to display a single blog post card
+const { post } = Astro.props;
+
+// const formatDate = new Date();
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  if (isNaN(date.getTime())) { // Check if the date is valid
+    return 'Invalid date';
+  }
+  return date.toISOString().slice(0, 10); // Return the date in YYYY-MM-DD format
+}
+
+
+
+---
+<div class="blog-card">
+  <a href={`/blog/${post.slug}/`}>
+    {post.card_image && <img src={post.card_image} alt={post.title} />}
+    <h3>{post.title}</h3>
+  </a>
+  {post.preview && <p>{post.preview}</p>}
+  {post.date && <span>{formatDate(post.date)}</span>}
+</div>
