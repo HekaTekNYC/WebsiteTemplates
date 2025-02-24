@@ -1,6 +1,38 @@
 ---
 import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import BlogCard from '../../components/blog-card/BlogCard.astro';
+const posts = await getCollection('blog');
 
+
+const blogPosts = posts.map(post => ({
+  title: post.data.title,
+  slug: post.slug || post.id,
+  date: post.data.date,
+
+  image: post.data.card_image, 
+}));
+---
+
+<Layout title="Blog">
+  <main>
+    <h1>Blog</h1>
+    <p>Explore our latest insights, tips, and updates.</p>
+    {blogPosts.map((post) => (
+      <BlogCard   
+        title={post.title} 
+        date={post.date} 
+        image={post.image} 
+      />
+    ))}
+
+  </main>
+</Layout>
+
+
+<!-- ---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
 const posts = await getCollection('blog');
 ---
 
@@ -20,4 +52,4 @@ const posts = await getCollection('blog');
       ))}
     </ul>
   </body>
-</html>
+</html> -->

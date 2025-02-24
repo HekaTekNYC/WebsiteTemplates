@@ -1,36 +1,38 @@
 ---
 import { getCollection } from "astro:content";
-import BlogLayout from "../../layouts/Blog.astro";
+import BlogPost from "../../layouts/BlogPost.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
 
+
   return posts.map((post) => ({
-    // params: { slug: post.data.slug || post.id }, 
+    params: { slug: post.slug || post.id },
     props: { post },
+
   }));
 }
 
-const { data, render } = Astro.props.post;
-const { 
-  title, 
-  meta_title, 
-  meta_description, 
-  blog_image, 
-  card_image, 
-  date, 
-  preview, 
-  pinned, 
-  categories, 
-  tags, 
-  cta_text, 
-  cta_link 
-} = data;
-
-const Content = await render();
+const { post } = Astro.props;
+const { title } = post.data;
+const date = new Date(post.data.date).toISOString();
+const Content = await post.render();
 ---
 
-<BlogLayout 
+<BlogPost title={title} date={date}>
+  {Content}
+</BlogPost>
+
+<!--
+// export async function getStaticPaths() {
+  //   const posts = await getCollection("blog");
+  
+  //   return posts.map((post) => ({
+  //     params: { slug: post.data.slug || post.id }, 
+  //     props: { post },
+  //   }));
+  // }
+ <BlogPost 
   title={title} 
   meta_title={meta_title} 
   meta_description={meta_description} 
@@ -44,4 +46,4 @@ const Content = await render();
   cta_link={cta_link}
 >
   {Content}
-</BlogLayout>
+</BlogPost> -->
