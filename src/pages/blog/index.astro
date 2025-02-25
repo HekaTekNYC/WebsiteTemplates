@@ -1,8 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
-// import BlogCard from '../../components/blog-card/BlogCard.astro';
-
 
 const posts = await getCollection("blog");
 posts.sort(
@@ -21,23 +19,16 @@ posts.sort(
           <ul>
             {posts.map((post) => (
               <li>
-                <a href={post.id}>{post.data.title}</a>
+                <a href={`/blog/${post.id}`}>{post.data.title}</a>
               </li>
             ))}
           </ul>
         )}
       </div>
     </div>
-    <!-- {blogPosts.map((post) => (
-      <BlogCard   
-        title={post.title} 
-        date={post.date} 
-        image={post.image} 
-      />
-    ))} -->
-
   </main>
 </Layout>
+
 
 
 <!-- ---
