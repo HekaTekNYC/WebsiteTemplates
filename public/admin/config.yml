@@ -2,17 +2,15 @@ backend:
   name: git-gateway
   branch: main
 local_backend: true
-media_folder: src/assets/images
-public_folder: /src/assets/images
+media_folder: src/assets/images/blog
+public_folder: /src/assets/images/blog
 
 collections:
-  - name: "blog" # Used in routes, e.g., /admin/collections/blog
-    label: "Blog" # Displayed in the UI
-    folder: "src/content/blog" # Path where markdown files are stored
-    create: true # Allow users to create new posts
-    fields: # Define the fields for each blog post
-      # - {label: "Meta Title", name: "meta_title", widget: "string"}
-      # - {label: "Meta Description", name: "meta_description", widget: "text"}
+  - name: "blog"
+    label: "Blog"
+    folder: "src/content/blog"
+    create: true
+    fields:
       - {label: "Title", name: "title", widget: "string", required: true}
       - {
           label: "Publish Date",
@@ -20,54 +18,84 @@ collections:
           widget: "datetime",
           required: true,
         }
-      # - {
-      #     label: "Blog Card Image",
-      #     name: "card_image",
-      #     widget: "image",
-      #     required: true,
-      #     hint: "Upload a 600x400px optimized PNG or WEBP",
-      #   }
       - {
-          label: "Banner Image",
-          name: "blog_image",
+          label: "Featured Image",
+          name: "image",
           widget: "image",
           required: true,
           hint: "Upload a 1200x630px optimized PNG or WEBP",
         }
-      # - {label: "Image Caption", name: "imageAlt", widget: "string"}
-      # - {
-      #     label: "Categories",
-      #     name: "categories",
-      #     widget: "list",
-      #     required: true,
-      #   }
-      # user can provide multiple categories
-      # - label: "Categories"
-      #   name: "categories"
-      #   widget: "list"
-      #   default: []
-      #   field: {label: "Category", name: "category", widget: "string"}
-      # - {label: "Pin Post", name: "pinned", widget: "boolean", default: false}
-      - {label: "Content", name: "content", widget: "markdown", required: true}
-      # - {
-      #     label: "Preview Text",
-      #     name: "preview",
-      #     widget: "text",
-      #     required: false,
-      #     pattern: ["^.{0,200}$", "Must be 200 characters or less"],
-      #     hint: "A short summary of the post (max 200 characters). If left blank, the first 200 characters of the post will be used.",
-      #   }
+      - {label: "Body", name: "body", widget: "markdown", required: true}
+# backend:
+#   name: git-gateway
+#   branch: main
+# local_backend: true
+# media_folder: src/assets/images
+# public_folder: /src/assets/images
 
-      # - {
-      #     label: "Call to Action Text",
-      #     name: "cta_text",
-      #     widget: "string",
-      #     required: false,
-      #   }
-      # - {
-      #     label: "Call to Action Link",
-      #     name: "cta_link",
-      #     widget: "string",
-      #     required: false,
-      #   }
-      # - {label: "Color", name: "color", widget: "color", required: false}
+# collections:
+#   - name: "blog"
+#     label: "Blog"
+#     folder: "src/content/blog"
+#     create: true
+#     fields:
+#       - {label: "Meta Title", name: "meta_title", widget: "string"}
+#       - {label: "Meta Description", name: "meta_description", widget: "text"}
+#       - {label: "Title", name: "title", widget: "string", required: true}
+#       - {
+#           label: "Publish Date",
+#           name: "date",
+#           widget: "datetime",
+#           required: true,
+#         }
+#       - {
+#           label: "Blog Card Image",
+#           name: "card_image",
+#           widget: "image",
+#           required: true,
+#           hint: "Upload a 600x400px optimized PNG or WEBP",
+#         }
+#       - {
+#           label: "Banner Image",
+#           name: "blog_image",
+#           widget: "image",
+#           required: true,
+#           hint: "Upload a 1200x630px optimized PNG or WEBP",
+#         }
+#       - {label: "Image Caption", name: "imageAlt", widget: "string"}
+#       - {
+#           label: "Categories",
+#           name: "categories",
+#           widget: "list",
+#           required: true,
+#         }
+#       user can provide multiple categories
+#       - label: "Categories"
+#         name: "categories"
+#         widget: "list"
+#         default: []
+#         field: {label: "Category", name: "category", widget: "string"}
+#       - {label: "Pin Post", name: "pinned", widget: "boolean", default: false}
+#       - {label: "Content", name: "content", widget: "markdown", required: true}
+#       - {
+#           label: "Preview Text",
+#           name: "preview",
+#           widget: "text",
+#           required: false,
+#           pattern: ["^.{0,200}$", "Must be 200 characters or less"],
+#           hint: "A short summary of the post (max 200 characters). If left blank, the first 200 characters of the post will be used.",
+#         }
+
+#       - {
+#           label: "Call to Action Text",
+#           name: "cta_text",
+#           widget: "string",
+#           required: false,
+#         }
+#       - {
+#           label: "Call to Action Link",
+#           name: "cta_link",
+#           widget: "string",
+#           required: false,
+#         }
+#       - {label: "Color", name: "color", widget: "color", required: false}

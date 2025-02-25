@@ -9,7 +9,7 @@ const blogCollection = defineCollection({
       title: z.string(),
       date: z.date(),
       // card_image: image(),
-      blog_image: image(),
+      image: image(),
       // categories: z.array(z.string()),
       // tags: z.array(z.string()).optional(),
       // pinned: z.boolean().default(false),
@@ -17,7 +17,6 @@ const blogCollection = defineCollection({
       // cta_text: z.string().optional(),
       // cta_link: z.string().optional(),
       // color: z.string().optional(),
-      content: z.string().optional(),
     }),
 })
 
