@@ -20,20 +20,20 @@ collections:
           widget: "datetime",
           required: true,
         }
-      - {
-          label: "Blog Card Image",
-          name: "card_image",
-          widget: "image",
-          required: true,
-          hint: "Upload a 600x400px optimized PNG or WEBP",
-        }
       # - {
-      #     label: "Banner Image",
-      #     name: "blog_image",
+      #     label: "Blog Card Image",
+      #     name: "card_image",
       #     widget: "image",
       #     required: true,
-      #     hint: "Upload a 1200x630px optimized PNG or WEBP",
+      #     hint: "Upload a 600x400px optimized PNG or WEBP",
       #   }
+      - {
+          label: "Banner Image",
+          name: "blog_image",
+          widget: "image",
+          required: true,
+          hint: "Upload a 1200x630px optimized PNG or WEBP",
+        }
       # - {label: "Image Caption", name: "imageAlt", widget: "string"}
       # - {
       #     label: "Categories",
